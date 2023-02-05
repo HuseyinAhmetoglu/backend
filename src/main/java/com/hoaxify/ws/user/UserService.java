@@ -9,14 +9,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     UserRepository userRepository;
-
     PasswordEncoder passwordEncoder;
 
-    // Bir calss ta sadece bir tane constructor varsa autowired kullanımına gerek yok
+    // Bir class ta sadece bir tane constructor varsa autowired kullanımına gerek yok
     //@Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void save(User user) {
